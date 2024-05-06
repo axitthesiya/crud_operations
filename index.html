@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DataTables CRUD</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <form id="dataForm">
+      <h4 class="mb-4 pb-3 center-align" style="color: green">
+        CRUD Using jquery
+      </h4>
+      <section>
+        <div class="container center-align">
+          <div class="row full-height justify-content-center">
+            <div class="col-12 text-center align-self-center py-5">
+              <div class="section pb-5 pt-5 pt-sm-2 text-center">
+                <div class="card-3d-wrap mx-auto">
+                  <div class="card-3d-wrapper">
+                    <div class="card-front">
+                      <div class="center-wrap">
+                        <div class="section text-center">
+                          <h4 class="mb-4 pb-3">Your Information</h4>
+                          <div class="form-group">
+                            <input
+                              class="form-control input-sm input-class"
+                              type="text"
+                              name="Name"
+                              class="form-style"
+                              placeholder="Name"
+                              id="name"
+                              autocomplete="off"
+                              required
+                            />
+                            <i class="input-icon uil uil-at"></i>
+                          </div>
+                          <div class="form-group mt-2">
+                            <input
+                              class="form-control input-sm input-class"
+                              type="text"
+                              name="Position"
+                              class="form-style"
+                              placeholder="Position Of Work"
+                              id="position"
+                              autocomplete="off"
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Position Is Required"
+                              required
+                            />
+                            <i class="input-icon uil uil-lock-alt"></i>
+                          </div>
+                          <div class="form-group mt-2">
+                            <input
+                              class="form-control input-sm input-class"
+                              type="text"
+                              name="Office"
+                              class="form-style"
+                              placeholder="Office Location"
+                              id="office"
+                              autocomplete="off"
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Office Address Is Required"
+                              required
+                            />
+                            <i class="input-icon uil uil-lock-alt"></i>
+                          </div>
+                          <div class="form-group mt-2">
+                            <input
+                              class="form-control input-sm input-class"
+                              type="number"
+                              name="Age"
+                              class="form-style"
+                              placeholder="Age"
+                              id="age"
+                              autocomplete="off"
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Age Is Required"
+                              required
+                            />
+                            <i class="input-icon uil uil-lock-alt"></i>
+                          </div>
+                          <div class="form-group mt-2">
+                            <input
+                              class="form-control input-sm input-class"
+                              type="date"
+                              name="StartDate"
+                              class="form-style"
+                              placeholder="Start Date"
+                              id="date"
+                              autocomplete="off"
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Date Is Required"
+                              required
+                            />
+                            <i class="input-icon uil uil-lock-alt"></i>
+                          </div>
+                          <div class="form-group mt-2">
+                            <input
+                              class="form-control input-sm input-class"
+                              type="number"
+                              name="Salary"
+                              class="form-style"
+                              placeholder="Salary"
+                              id="salary"
+                              autocomplete="off"
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Salary Is Required"
+                              required
+                            />
+                            <i class="input-icon uil uil-lock-alt"></i>
+                          </div>
+                          <div class="form-group mt-2 checkbox-aligment-class">
+                            <input
+                              type="checkbox"
+                              id="game1"
+                              name="game1"
+                              value="Cricket"
+                            />
+                            <label for="game1"> Cricket</label><br />
+                            <input
+                              type="checkbox"
+                              id="game2"
+                              name="game2"
+                              value="Hockey"
+                            />
+                            <label for="game2"> Hockey</label><br />
+                            <input
+                              type="checkbox"
+                              id="game3"
+                              name="game3"
+                              value="Puzzles"
+                            />
+                            <label for="game3">Puzzles</label><br />
+                          </div>
+                          <button type="submit" class="btn btn-success mt-4">
+                            Submit
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-secondary mt-4"
+                            id="clearForm"
+                          >
+                            Clear
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </form>
+    <br /><br />
+    <section style="background-color: lightgray">
+      <table id="example" class="display" style="width: 100%">
+        <thead>
+          <tr>
+            <br />
+            <th>Name</th>
+            <th>Position</th>
+            <th>Office</th>
+            <th>Age</th>
+            <th>Start date</th>
+            <th>Salary</th>
+            <th>Hobbies</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+
+      <script>
+        $(document).ready(function () {
+          var table = $("#example").DataTable();
+
+          function addOrUpdateRow(data) {
+            var existingRow = table
+              .rows()
+              .indexes()
+              .filter(function (value, index) {
+                return table.cell(value, 0).data() === data[0];
+              });
+
+            var editButton =
+              '<button class="btn btn-primary btn-sm edit">Edit</button>';
+            var deleteButton =
+              '<button class="btn btn-danger btn-sm delete">Delete</button>';
+
+            if (existingRow.any()) {
+              var rowData = table.row(existingRow[0]).data();
+              data.push(editButton + deleteButton);
+              data.push(
+                rowData[rowData.length - 2],
+                rowData[rowData.length - 1]
+              );
+              table.row(existingRow[0]).data(data).draw();
+            } else {
+              data.push(editButton + deleteButton);
+              table.row.add(data).draw();
+            }
+          }
+
+          $("#dataForm").submit(function (event) {
+            event.preventDefault();
+
+            var formData = {
+              Name: $("#name").val(),
+              Position: $("#position").val(),
+              Office: $("#office").val(),
+              Age: $("#age").val(),
+              StartDate: $("#date").val(),
+              Salary: $("#salary").val(),
+              Hobbies: $("input[type='checkbox']:checked")
+                .map(function () {
+                  return $(this).val();
+                })
+                .get()
+                .join(", "),
+            };
+
+            var newData = Object.values(formData);
+
+            addOrUpdateRow(newData);
+
+            $("#dataForm")[0].reset();
+          });
+
+          $("#example tbody").on("click", ".delete", function () {
+            var row = $(this).closest("tr");
+            table.row(row).remove().draw();
+          });
+
+          $("#example tbody").on("click", ".edit", function () {
+            var row = $(this).closest("tr");
+            var rowData = table.row(row).data();
+            $("#name").val(rowData[0]);
+            $("#position").val(rowData[1]);
+            $("#office").val(rowData[2]);
+            $("#age").val(rowData[3]);
+            $("#date").val(rowData[4]);
+            $("#salary").val(rowData[5]);
+
+            var hobbies = rowData[6].split(", ");
+            $("input[type='checkbox']").prop("checked", false);
+            hobbies.forEach(function (hobby) {
+              $("input[value='" + hobby + "']").prop("checked", true);
+            });
+          });
+
+          $("#clearForm").click(function () {
+            $("#dataForm")[0].reset();
+          });
+        });
+      </script>
+    </section>
+  </body>
+</html>
